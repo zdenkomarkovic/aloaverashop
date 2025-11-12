@@ -1,16 +1,16 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import ProductCard from '@/components/ProductCard';
-import CategoryCard from '@/components/CategoryCard';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import ProductCard from "@/components/ProductCard";
+import CategoryCard from "@/components/CategoryCard";
 import {
   getAllCategories,
   getFeaturedProducts,
   getBestsellerProducts,
-} from '@/lib/sanity.queries';
-import { Leaf, Heart, Shield, Sparkles } from 'lucide-react';
+} from "@/lib/sanity.queries";
+import { Leaf, Heart, Shield, Sparkles } from "lucide-react";
 
 // Dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const categories = await getAllCategories();
@@ -32,12 +32,14 @@ export default async function Home() {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               Vaš Partner za
-              <span className="text-emerald-600 block mt-2">Zdravlje i Lepotu</span>
+              <span className="text-emerald-600 block mt-2">
+                Zdravlje i Lepotu
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Otkrijte snagu prirode sa našom premium kolekcijom Aloe Vera proizvoda.
-              Prirodna nega za vaše telo i dušu.
+              Otkrijte snagu prirode sa našom premium kolekcijom Aloe Vera
+              proizvoda. Prirodna nega za vaše telo i dušu.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -72,23 +74,24 @@ export default async function Home() {
             {[
               {
                 icon: <Leaf className="w-8 h-8" />,
-                title: '100% Prirodno',
-                description: 'Svi proizvodi su napravljeni od prirodnih sastojaka',
+                title: "100% Prirodno",
+                description:
+                  "Svi proizvodi su napravljeni od prirodnih sastojaka",
               },
               {
                 icon: <Heart className="w-8 h-8" />,
-                title: 'Zdravlje',
-                description: 'Poboljšajte svoje zdravlje prirodnim putem',
+                title: "Zdravlje",
+                description: "Poboljšajte svoje zdravlje prirodnim putem",
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                title: 'Kvalitet',
-                description: 'Garantovani proizvodi najvišeg kvaliteta',
+                title: "Kvalitet",
+                description: "Garantovani proizvodi najvišeg kvaliteta",
               },
               {
                 icon: <Sparkles className="w-8 h-8" />,
-                title: 'Lepota',
-                description: 'Prirodna nega za vašu kožu i telo',
+                title: "Lepota",
+                description: "Prirodna nega za vašu kožu i telo",
               },
             ].map((benefit, index) => (
               <div
@@ -117,7 +120,8 @@ export default async function Home() {
                 Kategorije proizvoda
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Istražite našu široku paletu prirodnih proizvoda za zdravlje, lepotu i dobrobit
+                Istražite našu široku paletu prirodnih proizvoda za zdravlje,
+                lepotu i dobrobit
               </p>
             </div>
 
@@ -192,8 +196,9 @@ export default async function Home() {
             Zaradite sa nama!
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Postanite naš poslovni partner i otkrijte mogućnosti za zaradu od kuće.
-            Pridružite se našem timu i započnite svoju poslovnu priču danas!
+            Postanite naš poslovni partner i otkrijte mogućnosti za zaradu od
+            kuće. Pridružite se našem timu i započnite svoju poslovnu priču
+            danas!
           </p>
           <Button
             asChild

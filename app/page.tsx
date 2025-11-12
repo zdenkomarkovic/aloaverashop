@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
+import AloeVeraInfo from '@/components/AloeVeraInfo';
 import {
   getAllCategories,
   getFeaturedProducts,
@@ -184,6 +185,9 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* Aloe Vera Info Section */}
+      <AloeVeraInfo />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">

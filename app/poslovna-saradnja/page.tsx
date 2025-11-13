@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Briefcase,
@@ -78,8 +79,21 @@ export default function PoslovnaSaradnjaPage() {
   return (
     <main className="min-h-screen pt-32 pb-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-emerald-600 to-teal-600 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+      <section className="relative py-32 md:py-40 text-white overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/1511.jpg"
+            alt="Poslovna saradnja"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-emerald-800/85 to-teal-900/90" />
+        </div>
+
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 text-sm font-semibold">
@@ -91,7 +105,7 @@ export default function PoslovnaSaradnjaPage() {
               Postanite naš poslovni partner
             </h1>
 
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-xl mb-8 opacity-95">
               Otkrijte jedinstvenu poslovnu priliku i započnite zaradu od kuće
               sa najkvalitetnijim Aloe Vera proizvodima na tržištu
             </p>
@@ -99,16 +113,12 @@ export default function PoslovnaSaradnjaPage() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-emerald-600 hover:bg-gray-100 text-lg px-8 py-6"
+              className="bg-white text-emerald-600 hover:bg-gray-100 text-lg px-8 py-6 shadow-xl"
             >
               <Link href="/kontakt">Prijavite se sada</Link>
             </Button>
           </div>
         </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-3xl opacity-10 animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-white rounded-full blur-3xl opacity-10 animate-pulse delay-700" />
       </section>
 
       {/* Benefits Section */}

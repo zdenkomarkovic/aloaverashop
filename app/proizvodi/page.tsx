@@ -3,9 +3,12 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
 import ProductCard from '@/components/ProductCard';
+import Pagination from '@/components/Pagination';
 import { Product, Category } from '@/types/sanity';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
+
+const PRODUCTS_PER_PAGE = 12;
 
 function ProizvodiContent() {
   const searchParams = useSearchParams();
@@ -17,6 +20,7 @@ function ProizvodiContent() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     categorySlug
   );
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,9 +46,14 @@ function ProizvodiContent() {
     }
 
     fetchData();
+    setCurrentPage(1); // Reset to first page when category changes
   }, [selectedCategory]);
 
-  const filteredProducts = products;
+  // Pagination logic
+  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const endIndex = startIndex + PRODUCTS_PER_PAGE;
+  const paginatedProducts = products.slice(startIndex, endIndex);
 
   return (
     <main className="min-h-screen pt-32 pb-20">
@@ -99,18 +108,25 @@ function ProizvodiContent() {
           <div className="flex justify-center items-center py-20">
             <Loader2 className="w-12 h-12 animate-spin text-emerald-600" />
           </div>
-        ) : filteredProducts.length > 0 ? (
+        ) : products.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredProducts.map((product) => (
+              {paginatedProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
             </div>
 
             <div className="mt-12 text-center text-gray-600">
-              Prikazano {filteredProducts.length}{' '}
-              {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
+              Prikazano {startIndex + 1} - {Math.min(endIndex, products.length)} od{' '}
+              {products.length}{' '}
+              {products.length === 1 ? 'proizvoda' : 'proizvoda'}
             </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </>
         ) : (
           <div className="text-center py-20">

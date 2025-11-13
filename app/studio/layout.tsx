@@ -7,9 +7,5 @@ export default function StudioLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="sr">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }

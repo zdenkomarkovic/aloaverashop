@@ -5,7 +5,7 @@ import { getProductBySlug } from '@/lib/sanity.queries';
 import { urlFor } from '@/sanity/image';
 import { Button } from '@/components/ui/button';
 import { PortableText } from '@portabletext/react';
-import { ShoppingCart, Check, X, Package, Leaf } from 'lucide-react';
+import { ShoppingCart, Check, X, Package, Leaf, Mail, MessageCircle } from 'lucide-react';
 
 interface ProductPageProps {
   params: Promise<{
@@ -169,22 +169,55 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* CTA Buttons */}
             <div className="space-y-4 mb-8">
-              <Button
-                size="lg"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-lg py-6"
-                disabled={!product.inStock}
-              >
-                <ShoppingCart className="w-5 h-5 mr-2" />
-                {product.inStock ? 'Dodaj u korpu' : 'Nije dostupno'}
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full border-emerald-600 text-emerald-600 hover:bg-emerald-50 text-lg py-6"
-              >
-                <Link href="/kontakt">Kontaktirajte nas</Link>
-              </Button>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 mb-4 text-lg">
+                  Naručite ovaj proizvod:
+                </h3>
+
+                {/* Email Button */}
+                <a
+                  href="mailto:sijaj.sa.tijanam@gmail.com"
+                  className="flex items-center gap-4 p-4 bg-white rounded-lg border-2 border-emerald-200 hover:border-emerald-600 hover:bg-emerald-50 transition-all mb-3"
+                >
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <div className="flex-grow text-left">
+                    <div className="font-semibold text-gray-900">Pošaljite Email</div>
+                    <div className="text-sm text-gray-600">sijaj.sa.tijanam@gmail.com</div>
+                  </div>
+                </a>
+
+                {/* WhatsApp Button */}
+                <a
+                  href="https://wa.me/381645215667"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-white rounded-lg border-2 border-green-200 hover:border-green-600 hover:bg-green-50 transition-all mb-3"
+                >
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div className="flex-grow text-left">
+                    <div className="font-semibold text-gray-900">WhatsApp (Srbija)</div>
+                    <div className="text-sm text-gray-600">064/52-15-667</div>
+                  </div>
+                </a>
+
+                {/* Viber Button */}
+                <a
+                  href="viber://chat?number=38765311833"
+                  className="flex items-center gap-4 p-4 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-600 hover:bg-purple-50 transition-all"
+                >
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div className="flex-grow text-left">
+                    <div className="font-semibold text-gray-900">Viber (BiH)</div>
+                    <div className="text-sm text-gray-600">065/311-833</div>
+                  </div>
+                </a>
+              </div>
             </div>
 
             {/* Features */}

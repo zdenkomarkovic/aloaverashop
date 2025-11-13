@@ -53,10 +53,10 @@ export default function ContactForm() {
     <div className="">
       <Form {...form}>
         <form
-          className="grid grid-cols-3 items-center p-4 lg:p-10 shadow-xl shadow-primary rounded-xl"
+          className="p-8 bg-white shadow-xl rounded-2xl border border-emerald-100"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="col-span-3 flex flex-col gap-4 lg:col-span-3 lg:gap-8">
+          <div className="flex flex-col gap-6">
             <FormField
               control={form.control}
               name="name"
@@ -119,9 +119,10 @@ export default function ContactForm() {
             />
             <Button
               disabled={isLoading}
-              className="bg-primary  hover:bg-gray-600 transition-colors ease-in-out duration-500"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white transition-colors w-full py-6 text-lg font-semibold"
+              type="submit"
             >
-              {isLoading ? "Sending....." : "Send"}
+              {isLoading ? "Šalje se..." : "Pošalji poruku"}
             </Button>
           </div>
         </form>

@@ -1,9 +1,6 @@
-import ButtonToTop from "@/components/ButtonToTop";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import type { Metadata } from "next";
 import { CartProvider } from "@/contexts/CartContext";
-import { Toaster } from "@/components/ui/sonner";
+import ConditionalLayout from "@/components/ConditionalLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -66,11 +63,7 @@ export default function RootLayout({
         className="antialiased text-gray-900 bg-white text-base font-sans"
       >
         <CartProvider>
-          <Header />
-          {children}
-          <ButtonToTop />
-          <Footer />
-          <Toaster />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </CartProvider>
       </body>
     </html>

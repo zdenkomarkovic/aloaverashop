@@ -5,6 +5,8 @@ import { getProductBySlug } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/image";
 import { PortableText } from "@portabletext/react";
 import { Check, X, Package, Mail, MessageCircle } from "lucide-react";
+import ProductImageGallery from "@/components/ProductImageGallery";
+import { portableTextComponents } from "@/components/PortableTextComponents";
 
 interface ProductPageProps {
   params: Promise<{
@@ -57,53 +59,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Images */}
           <div>
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
-              <Image
-                src={mainImageUrl}
-                alt={product.images[0]?.alt || product.name}
-                fill
-                className="object-cover"
-                priority
-              />
-
-              {/* Badges */}
-              <div className="absolute top-4 left-4 flex flex-col gap-2">
-                {product.new && (
-                  <span className="bg-blue-600 text-white px-4 py-2 text-sm font-semibold rounded-full">
-                    NOVO
-                  </span>
-                )}
-                {discount > 0 && (
-                  <span className="bg-red-600 text-white px-4 py-2 text-sm font-semibold rounded-full">
-                    -{discount}%
-                  </span>
-                )}
-                {product.bestseller && (
-                  <span className="bg-emerald-600 text-white px-4 py-2 text-sm font-semibold rounded-full">
-                    BESTSELLER
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Thumbnail images */}
-            {product.images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
-                {product.images.slice(0, 4).map((image, index) => (
-                  <div
-                    key={index}
-                    className="relative aspect-square rounded-lg overflow-hidden bg-gray-100 border-2 border-transparent hover:border-emerald-600 transition-colors cursor-pointer"
-                  >
-                    <Image
-                      src={urlFor(image).width(200).height(200).url()}
-                      alt={image.alt || `${product.name} ${index + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+            <ProductImageGallery
+              images={product.images}
+              productName={product.name}
+              badges={{
+                new: product.new,
+                bestseller: product.bestseller,
+                discount: discount,
+              }}
+            />
           </div>
 
           {/* Product Info */}
@@ -237,7 +201,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {product.description && (
             <div className="md:col-span-2">
               <div className="prose prose-lg max-w-none text-gray-700">
-                <PortableText value={product.description} />
+                <PortableText
+                  value={product.description}
+                  components={portableTextComponents}
+                />
               </div>
             </div>
           )}

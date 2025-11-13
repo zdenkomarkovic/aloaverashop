@@ -6,6 +6,7 @@ import { urlFor } from '@/sanity/image';
 import { PortableText } from '@portabletext/react';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { portableTextComponents } from '@/components/PortableTextComponents';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -15,30 +16,6 @@ interface BlogPostPageProps {
 
 // Dynamic rendering
 export const dynamic = 'force-dynamic';
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }: { value: { asset: { _ref: string }; alt?: string; caption?: string } }) => {
-      const imageUrl = urlFor(value).width(1200).url();
-      return (
-        <div className="my-8 rounded-xl overflow-hidden">
-          <Image
-            src={imageUrl}
-            alt={value.alt || 'Blog image'}
-            width={1200}
-            height={800}
-            className="w-full h-auto"
-          />
-          {value.caption && (
-            <p className="text-center text-sm text-gray-500 mt-2">
-              {value.caption}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
-};
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;

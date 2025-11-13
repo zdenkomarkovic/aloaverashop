@@ -195,7 +195,26 @@ export default async function Home() {
           </div>
         </section>
       )}
-
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <div className="container mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl text-white font-bold mb-6">
+            Zaradite sa nama!
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Postanite naš poslovni partner i otkrijte mogućnosti za zaradu od
+            kuće. Pridružite se našem timu i započnite svoju poslovnu priču
+            danas!
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="bg-white text-emerald-600 hover:bg-gray-100 text-lg px-8 py-6"
+          >
+            <Link href="/poslovna-saradnja">Saznaj više o saradnji</Link>
+          </Button>
+        </div>
+      </section>
       {/* Aloe Vera Info Section */}
       <AloeVeraInfo />
 
@@ -292,27 +311,6 @@ export default async function Home() {
           </div>
         </section>
       )}
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-        <div className="container mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Zaradite sa nama!
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Postanite naš poslovni partner i otkrijte mogućnosti za zaradu od
-            kuće. Pridružite se našem timu i započnite svoju poslovnu priču
-            danas!
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-emerald-600 hover:bg-gray-100 text-lg px-8 py-6"
-          >
-            <Link href="/poslovna-saradnja">Saznaj više o saradnji</Link>
-          </Button>
-        </div>
-      </section>
     </main>
   );
 }

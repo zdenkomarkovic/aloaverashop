@@ -1,10 +1,10 @@
-import ContactForm from '@/components/ContactForm';
-import { Mail, Phone, MessageCircle } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import ContactForm from "@/components/ContactForm";
+import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
-  title: 'Kontakt',
-  description: 'Kontaktirajte nas za sve informacije o Aloe Vera proizvodima',
+  title: "Kontakt",
+  description: "Kontaktirajte nas za sve informacije o Aloe Vera proizvodima",
 };
 
 export default function KontaktPage() {
@@ -13,12 +13,12 @@ export default function KontaktPage() {
       <div className="container mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Kontaktirajte nas
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Imate pitanja? Želite da naručite proizvode ili saznate više o našoj ponudi?
-            Slobodno nas kontaktirajte!
+            Imate pitanja? Želite da naručite proizvode ili saznate više o našoj
+            ponudi? Slobodno nas kontaktirajte!
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export default function KontaktPage() {
           {/* Contact Information */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold mb-6">
                 Informacije za kontakt
               </h2>
               <p className="text-gray-600 mb-8">
@@ -41,14 +41,16 @@ export default function KontaktPage() {
               <Card className="border-emerald-200 hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-emerald-600" />
+                    <div className="w-12 h-12 border-primary border-2 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-6 h-6 text-emerald-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Email
+                      </h3>
                       <a
                         href="mailto:sijaj.sa.tijanam@gmail.com"
-                        className="text-emerald-600 hover:text-emerald-700 transition-colors"
+                        className="text-emerald-400 hover:text-emerald-500 transition-colors"
                       >
                         sijaj.sa.tijanam@gmail.com
                       </a>
@@ -64,8 +66,8 @@ export default function KontaktPage() {
               <Card className="border-emerald-200 hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MessageCircle className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 border-primary border-2 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">
@@ -75,7 +77,7 @@ export default function KontaktPage() {
                         href="https://wa.me/381645215667"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-green-600 hover:text-green-700 transition-colors flex items-center gap-2"
+                        className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
                       >
                         <Phone className="w-4 h-4" />
                         064/52-15-667
@@ -92,7 +94,7 @@ export default function KontaktPage() {
               <Card className="border-emerald-200 hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 border-purple-600 border-2 rounded-full flex items-center justify-center flex-shrink-0">
                       <MessageCircle className="w-6 h-6 text-purple-600" />
                     </div>
                     <div>
@@ -115,51 +117,28 @@ export default function KontaktPage() {
               </Card>
             </div>
 
-            {/* Working Hours */}
-            <Card className="border-emerald-200 bg-emerald-50">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">
-                  Radno vreme
-                </h3>
-                <div className="space-y-2 text-gray-700">
-                  <div className="flex justify-between">
-                    <span>Ponedeljak - Petak:</span>
-                    <span className="font-medium">09:00 - 17:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Subota:</span>
-                    <span className="font-medium">09:00 - 14:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Nedelja:</span>
-                    <span className="font-medium">Zatvoreno</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Info Box */}
             <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6 rounded-xl">
-              <h3 className="font-bold text-xl mb-2">Besplatna dostava!</h3>
+              <h3 className="font-bold text-white text-xl mb-2">
+                Besplatna dostava!
+              </h3>
               <p className="text-emerald-50">
-                Za sve porudžbine preko 5000 RSD dobijate besplatnu dostavu širom
-                Srbije i BiH.
+                Za sve porudžbine preko 5000 RSD dobijate besplatnu dostavu
+                širom Srbije i BiH.
               </p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Pošaljite nam poruku
-            </h2>
+            <h2 className="text-2xl font-bold mb-6">Pošaljite nam poruku</h2>
             <ContactForm />
           </div>
         </div>
 
         {/* FAQ Section */}
         <div className="mt-20 max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-center">
             Često postavljena pitanja
           </h2>
 
@@ -169,8 +148,8 @@ export default function KontaktPage() {
                 Kako mogu da naručim?
               </h3>
               <p className="text-gray-600 text-sm">
-                Možete nas kontaktirati putem email-a, WhatsApp-a ili Viber-a. Naš
-                tim će vam pomoći sa narudžbinom i svim informacijama.
+                Možete nas kontaktirati putem email-a, WhatsApp-a ili Viber-a.
+                Naš tim će vam pomoći sa narudžbinom i svim informacijama.
               </p>
             </div>
 
@@ -179,8 +158,8 @@ export default function KontaktPage() {
                 Koliko traje dostava?
               </h3>
               <p className="text-gray-600 text-sm">
-                Dostava obično traje 2-3 radna dana za Srbiju i 3-5 radnih dana za
-                BiH, u zavisnosti od lokacije.
+                Dostava obično traje 2-3 radna dana za Srbiju i 3-5 radnih dana
+                za BiH, u zavisnosti od lokacije.
               </p>
             </div>
 
@@ -189,8 +168,8 @@ export default function KontaktPage() {
                 Da li imate fizičku prodavnicu?
               </h3>
               <p className="text-gray-600 text-sm">
-                Trenutno radimo online, ali možete nas kontaktirati za preuzimanje
-                proizvoda na dogovorenim lokacijama.
+                Trenutno radimo online, ali možete nas kontaktirati za
+                preuzimanje proizvoda na dogovorenim lokacijama.
               </p>
             </div>
 

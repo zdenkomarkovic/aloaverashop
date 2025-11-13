@@ -37,7 +37,7 @@ export default function Pagination({
         size="sm"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 disabled:opacity-50"
+        className="border-emerald-400 text-emerald-400 hover:bg-emerald-50 disabled:opacity-50"
       >
         <ChevronLeft className="w-4 h-4" />
         <span className="ml-1 hidden sm:inline">Prethodna</span>
@@ -50,7 +50,7 @@ export default function Pagination({
               variant="outline"
               size="sm"
               onClick={() => onPageChange(1)}
-              className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-10 h-10"
+              className="border-emerald-400 text-emerald-400 hover:bg-emerald-50 w-10 h-10"
             >
               1
             </Button>
@@ -66,8 +66,8 @@ export default function Pagination({
             onClick={() => onPageChange(page)}
             className={
               currentPage === page
-                ? "bg-emerald-600 hover:bg-emerald-700 w-10 h-10"
-                : "border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-10 h-10"
+                ? "bg-emerald-400 hover:bg-emerald-500 w-10 h-10"
+                : "border-emerald-400 text-emerald-400 hover:bg-emerald-50 w-10 h-10"
             }
           >
             {page}
@@ -83,7 +83,7 @@ export default function Pagination({
               variant="outline"
               size="sm"
               onClick={() => onPageChange(totalPages)}
-              className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-10 h-10"
+              className="border-emerald-400 text-emerald-400 hover:bg-emerald-50 w-10 h-10"
             >
               {totalPages}
             </Button>
@@ -96,7 +96,7 @@ export default function Pagination({
         size="sm"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 disabled:opacity-50"
+        className="border-emerald-400 text-emerald-400 hover:bg-emerald-50 disabled:opacity-50"
       >
         <span className="mr-1 hidden sm:inline">Sledeća</span>
         <ChevronRight className="w-4 h-4" />

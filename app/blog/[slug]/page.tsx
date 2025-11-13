@@ -1,12 +1,12 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getBlogPostBySlug } from '@/lib/sanity.queries';
-import { urlFor } from '@/sanity/image';
-import { PortableText } from '@portabletext/react';
-import { Calendar, User, ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { portableTextComponents } from '@/components/PortableTextComponents';
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { getBlogPostBySlug } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/image";
+import { PortableText } from "@portabletext/react";
+import { Calendar, User, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { portableTextComponents } from "@/components/PortableTextComponents";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -15,7 +15,7 @@ interface BlogPostPageProps {
 }
 
 // Dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
@@ -27,12 +27,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const imageUrl = post.mainImage
     ? urlFor(post.mainImage).width(1200).height(600).url()
-    : '/placeholder-blog.jpg';
+    : "/placeholder-blog.jpg";
 
-  const publishedDate = new Date(post.publishedAt).toLocaleDateString('sr-RS', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const publishedDate = new Date(post.publishedAt).toLocaleDateString("sr-RS", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <Button
           asChild
           variant="ghost"
-          className="mb-8 hover:bg-emerald-50 text-emerald-600"
+          className="mb-8 hover:bg-emerald-50 text-emerald-400"
         >
           <Link href="/blog">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Post Header */}
         <header className="mb-8">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-primary mb-6">
             {post.title}
           </h1>
 
@@ -92,17 +92,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t">
-          <div className="bg-emerald-50 rounded-xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-gray-200 rounded-xl p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4">
               Zainteresovani ste za naše proizvode?
             </h3>
             <p className="text-gray-600 mb-6">
-              Kontaktirajte nas i saznajte više o našoj ponudi Aloe Vera proizvoda
+              Kontaktirajte nas i saznajte više o našoj ponudi Aloe Vera
+              proizvoda
             </p>
             <Button
               asChild
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700"
+              className="bg-emerald-400 hover:bg-emerald-500"
             >
               <Link href="/kontakt">Kontaktirajte nas</Link>
             </Button>

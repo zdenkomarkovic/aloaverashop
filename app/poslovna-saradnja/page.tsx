@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import {
   Briefcase,
   TrendingUp,
@@ -10,74 +10,73 @@ import {
   Heart,
   DollarSign,
   CheckCircle,
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function PoslovnaSaradnjaPage() {
   const benefits = [
     {
       icon: <DollarSign className="w-8 h-8" />,
-      title: 'Odlična zarada',
+      title: "Odlična zarada",
       description:
-        'Konkurentne provizije i bonusi za uspešne prodajne rezultate',
+        "Konkurentne provizije i bonusi za uspešne prodajne rezultate",
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: 'Fleksibilno radno vreme',
-      description: 'Radite po svom rasporedu, iz udobnosti svog doma',
+      title: "Fleksibilno radno vreme",
+      description: "Radite po svom rasporedu, iz udobnosti svog doma",
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Tim podrška',
+      title: "Tim podrška",
       description:
-        'Dobijate svu potrebnu obuku i podršku od našeg iskusnog tima',
+        "Dobijate svu potrebnu obuku i podršku od našeg iskusnog tima",
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: 'Kvalitetni proizvodi',
-      description: 'Prodajte proizvode u koje verujete i koji menjaju živote',
+      title: "Kvalitetni proizvodi",
+      description: "Prodajte proizvode u koje verujete i koji menjaju živote",
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Mogućnost rasta',
-      description: 'Razvijte svoj biznis i napredujte u karijeri',
+      title: "Mogućnost rasta",
+      description: "Razvijte svoj biznis i napredujte u karijeri",
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Helping Others',
-      description: 'Pomažite ljudima da poboljšaju svoje zdravlje i život',
+      title: "Helping Others",
+      description: "Pomažite ljudima da poboljšaju svoje zdravlje i život",
     },
   ];
 
   const steps = [
     {
-      number: '01',
-      title: 'Prijavite se',
+      number: "01",
+      title: "Prijavite se",
       description:
-        'Popunite kontakt formu i prijavite svoje interesovanje za saradnju',
+        "Popunite kontakt formu i prijavite svoje interesovanje za saradnju",
     },
     {
-      number: '02',
-      title: 'Upoznajte nas',
+      number: "02",
+      title: "Upoznajte nas",
       description:
-        'Razgovaraćemo sa vama o mogućnostima i odgovoriti na sva pitanja',
+        "Razgovaraćemo sa vama o mogućnostima i odgovoriti na sva pitanja",
     },
     {
-      number: '03',
-      title: 'Obuka',
+      number: "03",
+      title: "Obuka",
       description:
-        'Proći ćete besplatnu obuku o proizvodima i prodajnim tehnikama',
+        "Proći ćete besplatnu obuku o proizvodima i prodajnim tehnikama",
     },
     {
-      number: '04',
-      title: 'Počnite zarađivati',
-      description:
-        'Započnite svoju poslovnu priču i ostvarite prihode',
+      number: "04",
+      title: "Počnite zarađivati",
+      description: "Započnite svoju poslovnu priču i ostvarite prihode",
     },
   ];
 
   return (
-    <main className="min-h-screen pt-32 pb-20">
+    <main className="min-h-screen  pb-20">
       {/* Hero Section */}
       <section className="relative py-32 md:py-40 text-white overflow-hidden">
         {/* Background Image */}
@@ -91,7 +90,7 @@ export default function PoslovnaSaradnjaPage() {
             quality={90}
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-emerald-800/85 to-teal-900/90" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -125,11 +124,12 @@ export default function PoslovnaSaradnjaPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold  mb-4">
               Zašto raditi sa nama?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nudimo vam sve što vam je potrebno za uspešan biznis i stabilnu zaradu
+              Nudimo vam sve što vam je potrebno za uspešan biznis i stabilnu
+              zaradu
             </p>
           </div>
 
@@ -140,7 +140,7 @@ export default function PoslovnaSaradnjaPage() {
                 className="group hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                  <div className="w-16 h-16 border-2 border-primary rounded-full flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-400 group-hover:text-white transition-colors">
                     {benefit.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -158,7 +158,7 @@ export default function PoslovnaSaradnjaPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Kako započeti?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -170,7 +170,7 @@ export default function PoslovnaSaradnjaPage() {
             {steps.map((step, index) => (
               <div key={index} className="relative">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-600 text-white rounded-full text-3xl font-bold mb-4">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-400 text-white rounded-full text-3xl font-bold mb-4">
                     {step.number}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -180,7 +180,7 @@ export default function PoslovnaSaradnjaPage() {
                 </div>
 
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-emerald-200" />
+                  <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-emerald-400" />
                 )}
               </div>
             ))}
@@ -192,26 +192,26 @@ export default function PoslovnaSaradnjaPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold  mb-8 text-center">
               Šta dobijate kao naš partner?
             </h2>
 
             <div className="space-y-4">
               {[
-                'Besplatnu obuku o proizvodima i prodajnim tehnikama',
-                'Marketing materijale i podršku',
-                'Direktan pristup svim proizvodima po specijalnim cenama',
-                'Online platformu za upravljanje narudžbinama',
-                'Kontinuiranu podršku i praćenje od strane mentora',
-                'Mogućnost napredovanja u karijeri',
-                'Bonus program za dostizanje prodajnih ciljeva',
-                'Pristup ekskluzivnim promocijama i novim proizvodima',
+                "Besplatnu obuku o proizvodima i prodajnim tehnikama",
+                "Marketing materijale i podršku",
+                "Direktan pristup svim proizvodima po specijalnim cenama",
+                "Online platformu za upravljanje narudžbinama",
+                "Kontinuiranu podršku i praćenje od strane mentora",
+                "Mogućnost napredovanja u karijeri",
+                "Bonus program za dostizanje prodajnih ciljeva",
+                "Pristup ekskluzivnim promocijama i novim proizvodima",
               ].map((item, index) => (
                 <div
                   key={index}
                   className="flex items-start gap-3 p-4 rounded-lg hover:bg-emerald-50 transition-colors"
                 >
-                  <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-0.5" />
                   <span className="text-lg text-gray-700">{item}</span>
                 </div>
               ))}
@@ -235,8 +235,8 @@ export default function PoslovnaSaradnjaPage() {
             </div>
 
             <p className="text-xl md:text-2xl text-gray-700 italic mb-6">
-              &quot;Saradnja sa Aloe Vera Shop-om mi je promenila život. Ne samo da
-              zarađujem dobro, već i pomažem ljudima da poboljšaju svoje
+              &quot;Saradnja sa Aloe Vera Shop-om mi je promenila život. Ne samo
+              da zarađujem dobro, već i pomažem ljudima da poboljšaju svoje
               zdravlje. Najlepša poslovna odluka koju sam donela!&quot;
             </p>
 

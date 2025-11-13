@@ -47,7 +47,7 @@ const MobileMenu = () => (
 );
 
 const DesktopNav = () => (
-  <ul className="hidden gap-8 lg:flex  text-xl">
+  <ul className="hidden gap-8 lg:flex  text-2xl">
     {navList.map((item, index) => (
       <Link key={index} href={item.link}>
         <motion.li
@@ -81,19 +81,20 @@ export default function Header() {
     <header
       className={`flex justify-center ${
         scrolled
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md"
+          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-md"
           : "bg-transparent"
-      }  fixed top-0 left-0 right-0 z-[10] transition-colors`}
+      }  fixed top-0 left-0 right-0 z-50 transition-colors`}
     >
-      <nav className="flex items-center justify-between px-8 max-w-[80rem] w-full text-primary font-bold">
-        <Link href="/" className="">
+      <nav className="flex items-center justify-between px-8 max-w-[80rem] w-full text-emerald-400 font-bold">
+        <Link href="/" className=" flex gap-3 items-center">
           <Image
             src={Logo}
             alt="dm rustic 24"
-            width={100}
+            width={80}
             height={80}
             className={`rounded-full `}
-          />
+          />{" "}
+          <span className="text-2xl">Aloe Vera</span>
         </Link>
         <DesktopNav />
 

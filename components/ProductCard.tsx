@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Product } from '@/types/sanity';
-import { urlFor } from '@/sanity/image';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import Image from "next/image";
+import { Product } from "@/types/sanity";
+import { urlFor } from "@/sanity/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
   product: Product;
@@ -12,7 +12,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const imageUrl = product.images[0]
     ? urlFor(product.images[0]).width(400).height(400).url()
-    : '/placeholder-product.jpg';
+    : "/placeholder-product.jpg";
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               </span>
             )}
             {product.bestseller && (
-              <span className="bg-emerald-600 text-white px-3 py-1 text-xs font-semibold rounded-full">
+              <span className="bg-emerald-400 text-white px-3 py-1 text-xs font-semibold rounded-full">
                 BESTSELLER
               </span>
             )}
@@ -79,20 +79,20 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="flex flex-col">
               {product.oldPrice && (
                 <span className="text-sm text-gray-400 line-through">
-                  {product.oldPrice.toLocaleString('sr-RS')} RSD
+                  {product.oldPrice.toLocaleString("sr-RS")} RSD
                 </span>
               )}
-              <span className="text-xl font-bold text-emerald-700">
-                {product.price.toLocaleString('sr-RS')} RSD
+              <span className="text-xl font-bold text-emerald-400">
+                {product.price.toLocaleString("sr-RS")} RSD
               </span>
             </div>
           </div>
 
           <Button
-            className="w-full mt-3 bg-emerald-600 hover:bg-emerald-700"
+            className="w-full mt-3 bg-emerald-400 hover:bg-emerald-500"
             disabled={!product.inStock}
           >
-            {product.inStock ? 'Pogledaj detalje' : 'Nema na stanju'}
+            {product.inStock ? "Pogledaj detalje" : "Nema na stanju"}
           </Button>
         </CardContent>
       </Link>

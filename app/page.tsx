@@ -34,7 +34,7 @@ export default async function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[100vh] flex items-center justify-center overflow-hidden ">
-        {/* <div className="absolute inset-0 bg-black bg-opacity-40 z-10 "></div>{" "} */}
+        <div className="absolute inset-0 bg-black bg-opacity-40 z-10 "></div>{" "}
         <Image src={"/hero.jpg"} fill alt="" className="object-cover" />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -48,7 +48,7 @@ export default async function Home() {
               <span className="text-emerald-400 block mt-2">Aloe Vera</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-2xl font-bold text-gray-100 mb-8 max-w-2xl mx-auto">
               Otkrijte snagu prirode sa našom premium kolekcijom Aloe Vera
               proizvoda. Prirodna nega za vaše telo i dušu.
             </p>
@@ -108,10 +108,10 @@ export default async function Home() {
                 key={index}
                 className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-emerald-50 transition-colors"
               >
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4">
+                <div className="w-16 h-16 border-2 border-emerald-400 rounded-full flex items-center justify-center text-emerald-400 mb-4">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="md:text-2xl font-bold text-gray-900 mb-2">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600">{benefit.description}</p>
@@ -126,7 +126,7 @@ export default async function Home() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
                 Kategorije proizvoda
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -149,15 +149,12 @@ export default async function Home() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Izdvojeni proizvodi
-              </h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
                 Naši najpopularniji proizvodi koji su osvojili srca kupaca
-              </p>
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {featuredProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
@@ -168,7 +165,7 @@ export default async function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                className="border-emerald-400 text-emerald-400 hover:bg-emerald-50"
               >
                 <Link href="/proizvodi">Pogledaj sve proizvode</Link>
               </Button>
@@ -207,7 +204,7 @@ export default async function Home() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold  mb-4">
                 Izdvojeni članci
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -263,7 +260,7 @@ export default async function Home() {
                           </div>
                         </div>
 
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-400 transition-colors line-clamp-2">
                           {post.title}
                         </h3>
 
@@ -271,7 +268,7 @@ export default async function Home() {
                           {post.excerpt}
                         </p>
 
-                        <div className="flex items-center text-emerald-600 font-semibold group-hover:gap-2 gap-1 transition-all">
+                        <div className="flex items-center text-emerald-400 font-semibold group-hover:gap-2 gap-1 transition-all">
                           Pročitaj više
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -287,7 +284,7 @@ export default async function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                className="border-emerald-400 text-emerald-400 hover:bg-emerald-50"
               >
                 <Link href="/blog">Pogledaj sve članke</Link>
               </Button>

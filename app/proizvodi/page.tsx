@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
-import ProductCard from '@/components/ProductCard';
-import Pagination from '@/components/Pagination';
-import { Product, Category } from '@/types/sanity';
-import { Button } from '@/components/ui/button';
-import { Loader2 } from 'lucide-react';
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import ProductCard from "@/components/ProductCard";
+import Pagination from "@/components/Pagination";
+import { Product, Category } from "@/types/sanity";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 const PRODUCTS_PER_PAGE = 12;
 
 function ProizvodiContent() {
   const searchParams = useSearchParams();
-  const categorySlug = searchParams.get('kategorija');
+  const categorySlug = searchParams.get("kategorija");
 
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -27,19 +27,19 @@ function ProizvodiContent() {
       setLoading(true);
       try {
         // Fetch categories
-        const categoriesRes = await fetch('/api/categories');
+        const categoriesRes = await fetch("/api/categories");
         const categoriesData = await categoriesRes.json();
         setCategories(categoriesData);
 
         // Fetch products
         const productsUrl = selectedCategory
           ? `/api/products?category=${selectedCategory}`
-          : '/api/products';
+          : "/api/products";
         const productsRes = await fetch(productsUrl);
         const productsData = await productsRes.json();
         setProducts(productsData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -60,11 +60,12 @@ function ProizvodiContent() {
       <div className="container mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Naši Proizvodi
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Istražite našu kolekciju prirodnih Aloe Vera proizvoda za zdravlje i lepotu
+            Istražite našu kolekciju prirodnih Aloe Vera proizvoda za zdravlje i
+            lepotu
           </p>
         </div>
 
@@ -72,12 +73,12 @@ function ProizvodiContent() {
         <div className="mb-12">
           <div className="flex flex-wrap justify-center gap-3">
             <Button
-              variant={selectedCategory === null ? 'default' : 'outline'}
+              variant={selectedCategory === null ? "default" : "outline"}
               onClick={() => setSelectedCategory(null)}
               className={
                 selectedCategory === null
-                  ? 'bg-emerald-600 hover:bg-emerald-700'
-                  : 'border-emerald-600 text-emerald-600 hover:bg-emerald-50'
+                  ? "bg-emerald-400 hover:bg-emerald-500"
+                  : "border-emerald-400 text-emerald-400 hover:bg-emerald-50"
               }
             >
               Sve kategorije
@@ -87,14 +88,14 @@ function ProizvodiContent() {
                 key={category._id}
                 variant={
                   selectedCategory === category.slug.current
-                    ? 'default'
-                    : 'outline'
+                    ? "default"
+                    : "outline"
                 }
                 onClick={() => setSelectedCategory(category.slug.current)}
                 className={
                   selectedCategory === category.slug.current
-                    ? 'bg-emerald-600 hover:bg-emerald-700'
-                    : 'border-emerald-600 text-emerald-600 hover:bg-emerald-50'
+                    ? "bg-emerald-600 hover:bg-emerald-700"
+                    : "border-emerald-600 text-emerald-600 hover:bg-emerald-50"
                 }
               >
                 {category.name}
@@ -114,12 +115,6 @@ function ProizvodiContent() {
               {paginatedProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
-            </div>
-
-            <div className="mt-12 text-center text-gray-600">
-              Prikazano {startIndex + 1} - {Math.min(endIndex, products.length)} od{' '}
-              {products.length}{' '}
-              {products.length === 1 ? 'proizvoda' : 'proizvoda'}
             </div>
 
             <Pagination
@@ -148,13 +143,15 @@ function ProizvodiContent() {
 
 export default function ProizvodiPage() {
   return (
-    <Suspense fallback={
-      <main className="min-h-screen pt-32 pb-20">
-        <div className="container mx-auto px-4 md:px-8 flex justify-center items-center py-20">
-          <Loader2 className="w-12 h-12 animate-spin text-emerald-600" />
-        </div>
-      </main>
-    }>
+    <Suspense
+      fallback={
+        <main className="min-h-screen pt-32 pb-20">
+          <div className="container mx-auto px-4 md:px-8 flex justify-center items-center py-20">
+            <Loader2 className="w-12 h-12 animate-spin text-emerald-600" />
+          </div>
+        </main>
+      }
+    >
       <ProizvodiContent />
     </Suspense>
   );

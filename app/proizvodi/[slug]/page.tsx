@@ -36,22 +36,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="container mx-auto px-4 md:px-8">
         {/* Breadcrumbs */}
         <nav className="mb-8 text-sm text-gray-600">
-          <Link href="/" className="hover:text-emerald-600">
+          <Link href="/" className="hover:text-emerald-400">
             Početna
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/proizvodi" className="hover:text-emerald-600">
+          <Link href="/proizvodi" className="hover:text-emerald-400">
             Proizvodi
           </Link>
           <span className="mx-2">/</span>
           <Link
             href={`/proizvodi?kategorija=${product.category.slug.current}`}
-            className="hover:text-emerald-600"
+            className="hover:text-emerald-400"
           >
             {product.category.name}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">{product.name}</span>
+          <span className="text-primary">{product.name}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -111,13 +111,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="mb-4">
               <Link
                 href={`/proizvodi?kategorija=${product.category.slug.current}`}
-                className="text-emerald-600 hover:text-emerald-700 font-medium text-sm"
+                className="text-emerald-400 hover:text-emerald-500 font-medium text-sm"
               >
                 {product.category.name}
               </Link>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               {product.name}
             </h1>
 
@@ -148,7 +148,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   </span>
                 </div>
               )}
-              <div className="text-4xl font-bold text-emerald-600">
+              <div className="text-4xl font-bold text-emerald-400">
                 {product.price.toLocaleString("sr-RS")} RSD
               </div>
             </div>
@@ -156,7 +156,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Stock Status */}
             <div className="mb-6">
               {product.inStock ? (
-                <div className="flex items-center gap-2 text-emerald-600">
+                <div className="flex items-center gap-2 text-emerald-400">
                   <Check className="w-5 h-5" />
                   <span className="font-semibold">Dostupno na stanju</span>
                 </div>
@@ -228,22 +228,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </a>
               </div>
             </div>
-
-            {/* Features */}
-            <div className="bg-emerald-50 rounded-xl p-6">
-              <div className="flex items-start gap-3 mb-3">
-                <Leaf className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    100% Prirodni sastojci
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Svi naši proizvodi su napravljeni od prirodnih i organskih
-                    sastojaka
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -252,9 +236,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Description */}
           {product.description && (
             <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Opis proizvoda
-              </h2>
               <div className="prose prose-lg max-w-none text-gray-700">
                 <PortableText value={product.description} />
               </div>

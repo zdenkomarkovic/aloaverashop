@@ -33,24 +33,22 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
-        <div className="absolute inset-0 bg-[url('/aloe-pattern.svg')] opacity-5" />
-
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden ">
+        {/* <div className="absolute inset-0 bg-black bg-opacity-40 z-10 "></div>{" "} */}
+        <Image src={"/hero.jpg"} fill alt="" className="object-cover" />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full mb-6 text-sm font-semibold">
-              <Leaf className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 border-2 border-white text-white px-4 py-2 rounded-full mb-6 md:text-2xl font-semibold">
+              <Leaf className="w-8 h-8" />
               100% Prirodni proizvodi
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-              Vaš Partner za
-              <span className="text-emerald-600 block mt-2">
-                Zdravlje i Lepotu
-              </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+              Vaš Partner za Zdravlje i Lepotu
+              <span className="text-emerald-400 block mt-2">Aloe Vera</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
               Otkrijte snagu prirode sa našom premium kolekcijom Aloe Vera
               proizvoda. Prirodna nega za vaše telo i dušu.
             </p>
@@ -59,9 +57,9 @@ export default async function Home() {
               <Button
                 asChild
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-lg px-8 py-6"
+                className="bg-emerald-400 hover:bg-emerald-500 text-lg px-8 py-6"
               >
-                <Link href="/proizvodi">Pogledaj proizvode</Link>
+                <Link href="/proizvodi ">Pogledaj proizvode</Link>
               </Button>
               <Button
                 asChild
@@ -74,7 +72,6 @@ export default async function Home() {
             </div>
           </div>
         </div>
-
         {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-200 rounded-full blur-3xl opacity-30 animate-pulse" />
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-200 rounded-full blur-3xl opacity-30 animate-pulse delay-700" />

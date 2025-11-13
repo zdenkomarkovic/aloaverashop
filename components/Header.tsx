@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../public/android-chrome-192x192.png";
+import Logo from "../public/favicon-32x32.png";
 import Link from "next/link";
 import { MenuIcon } from "lucide-react";
 
@@ -92,7 +92,7 @@ export default function Header() {
             alt="dm rustic 24"
             width={100}
             height={80}
-            className="rounded-full"
+            className={`rounded-full `}
           />
         </Link>
         <DesktopNav />

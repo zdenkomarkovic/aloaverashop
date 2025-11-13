@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import type { Metadata } from "next";
 import { CartProvider } from "@/contexts/CartContext";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -69,6 +70,7 @@ export default function RootLayout({
           {children}
           <ButtonToTop />
           <Footer />
+          <Toaster />
         </CartProvider>
       </body>
     </html>

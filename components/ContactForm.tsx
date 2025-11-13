@@ -119,7 +119,7 @@ export default function ContactForm() {
             />
             <Button
               disabled={isLoading}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white transition-colors w-full py-6 text-lg font-semibold"
+              className="bg-emerald-400 hover:bg-emerald-500 text-white transition-colors w-full py-6 text-lg font-semibold"
               type="submit"
             >
               {isLoading ? "Šalje se..." : "Pošalji poruku"}

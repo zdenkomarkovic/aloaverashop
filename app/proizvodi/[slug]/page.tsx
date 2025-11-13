@@ -139,7 +139,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   href="mailto:sijaj.sa.tijanam@gmail.com"
                   className="flex items-center gap-4 p-4 bg-white rounded-lg border-2 border-emerald-200 hover:border-emerald-600 hover:bg-emerald-50 transition-all mb-3"
                 >
-                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-grow text-left">
@@ -159,7 +159,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-white rounded-lg border-2 border-green-200 hover:border-green-600 hover:bg-green-50 transition-all mb-3"
                 >
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                     <MessageCircle className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-grow text-left">

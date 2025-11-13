@@ -246,7 +246,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="space-y-6">
             {product.ingredients && (
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-primary mb-3">
                   Sastojci
                 </h3>
                 <p className="text-gray-700 whitespace-pre-line">
@@ -257,7 +257,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {product.usage && (
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-primary mb-3">
                   Način upotrebe
                 </h3>
                 <p className="text-gray-700 whitespace-pre-line">

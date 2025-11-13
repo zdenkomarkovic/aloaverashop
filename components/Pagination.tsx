@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface PaginationProps {
   currentPage: number;
@@ -18,7 +18,7 @@ export default function Pagination({
   const maxVisiblePages = 5;
 
   let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+  const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
   if (endPage - startPage < maxVisiblePages - 1) {
     startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -54,22 +54,20 @@ export default function Pagination({
             >
               1
             </Button>
-            {startPage > 2 && (
-              <span className="px-2 text-gray-500">...</span>
-            )}
+            {startPage > 2 && <span className="px-2 text-gray-500">...</span>}
           </>
         )}
 
         {pages.map((page) => (
           <Button
             key={page}
-            variant={currentPage === page ? 'default' : 'outline'}
+            variant={currentPage === page ? "default" : "outline"}
             size="sm"
             onClick={() => onPageChange(page)}
             className={
               currentPage === page
-                ? 'bg-emerald-600 hover:bg-emerald-700 w-10 h-10'
-                : 'border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-10 h-10'
+                ? "bg-emerald-600 hover:bg-emerald-700 w-10 h-10"
+                : "border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-10 h-10"
             }
           >
             {page}

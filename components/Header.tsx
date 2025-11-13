@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Logo from "../public/android-chrome-192x192.png";
 import Link from "next/link";
-import { MenuIcon, PhoneIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
 import {
   Sheet,

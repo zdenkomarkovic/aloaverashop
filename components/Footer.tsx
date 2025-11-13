@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../public/android-chrome-192x192.png";
-import { Mail, MessageCircle, MapPin } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -23,8 +23,8 @@ export default function Footer() {
             </Link>
             <h3 className="text-xl font-bold mb-4">Aloe Vera Shop</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Vaš partner za zdravlje i lepotu. 100% prirodni Aloe Vera proizvodi
-              za vašu dobrobit.
+              Vaš partner za zdravlje i lepotu. 100% prirodni Aloe Vera
+              proizvodi za vašu dobrobit.
             </p>
           </div>
 
@@ -96,7 +96,9 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MessageCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-gray-400 text-xs mb-1">WhatsApp (Srbija)</p>
+                  <p className="text-gray-400 text-xs mb-1">
+                    WhatsApp (Srbija)
+                  </p>
                   <a
                     href="https://wa.me/381645215667"
                     target="_blank"

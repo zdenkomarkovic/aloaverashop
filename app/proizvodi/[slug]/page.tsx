@@ -1,11 +1,10 @@
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getProductBySlug } from '@/lib/sanity.queries';
-import { urlFor } from '@/sanity/image';
-import { Button } from '@/components/ui/button';
-import { PortableText } from '@portabletext/react';
-import { ShoppingCart, Check, X, Package, Leaf, Mail, MessageCircle } from 'lucide-react';
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { getProductBySlug } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/image";
+import { PortableText } from "@portabletext/react";
+import { Check, X, Package, Leaf, Mail, MessageCircle } from "lucide-react";
 
 interface ProductPageProps {
   params: Promise<{
@@ -14,7 +13,7 @@ interface ProductPageProps {
 }
 
 // Dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
@@ -26,7 +25,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const mainImageUrl = product.images[0]
     ? urlFor(product.images[0]).width(800).height(800).url()
-    : '/placeholder-product.jpg';
+    : "/placeholder-product.jpg";
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -140,15 +139,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {product.oldPrice && (
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-2xl text-gray-400 line-through">
-                    {product.oldPrice.toLocaleString('sr-RS')} RSD
+                    {product.oldPrice.toLocaleString("sr-RS")} RSD
                   </span>
                   <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
-                    Ušteda {(product.oldPrice - product.price).toLocaleString('sr-RS')} RSD
+                    Ušteda{" "}
+                    {(product.oldPrice - product.price).toLocaleString("sr-RS")}{" "}
+                    RSD
                   </span>
                 </div>
               )}
               <div className="text-4xl font-bold text-emerald-600">
-                {product.price.toLocaleString('sr-RS')} RSD
+                {product.price.toLocaleString("sr-RS")} RSD
               </div>
             </div>
 
@@ -183,8 +184,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <Mail className="w-6 h-6 text-emerald-600" />
                   </div>
                   <div className="flex-grow text-left">
-                    <div className="font-semibold text-gray-900">Pošaljite Email</div>
-                    <div className="text-sm text-gray-600">sijaj.sa.tijanam@gmail.com</div>
+                    <div className="font-semibold text-gray-900">
+                      Pošaljite Email
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      sijaj.sa.tijanam@gmail.com
+                    </div>
                   </div>
                 </a>
 
@@ -199,7 +204,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <MessageCircle className="w-6 h-6 text-green-600" />
                   </div>
                   <div className="flex-grow text-left">
-                    <div className="font-semibold text-gray-900">WhatsApp (Srbija)</div>
+                    <div className="font-semibold text-gray-900">
+                      WhatsApp (Srbija)
+                    </div>
                     <div className="text-sm text-gray-600">064/52-15-667</div>
                   </div>
                 </a>
@@ -213,7 +220,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <MessageCircle className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="flex-grow text-left">
-                    <div className="font-semibold text-gray-900">Viber (BiH)</div>
+                    <div className="font-semibold text-gray-900">
+                      Viber (BiH)
+                    </div>
                     <div className="text-sm text-gray-600">065/311-833</div>
                   </div>
                 </a>
@@ -229,7 +238,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     100% Prirodni sastojci
                   </h3>
                   <p className="text-sm text-gray-600">
-                    Svi naši proizvodi su napravljeni od prirodnih i organskih sastojaka
+                    Svi naši proizvodi su napravljeni od prirodnih i organskih
+                    sastojaka
                   </p>
                 </div>
               </div>

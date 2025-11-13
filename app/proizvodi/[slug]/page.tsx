@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { getProductBySlug } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/image";
@@ -24,10 +23,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
-
-  const mainImageUrl = product.images[0]
-    ? urlFor(product.images[0]).width(800).height(800).url()
-    : "/placeholder-product.jpg";
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)

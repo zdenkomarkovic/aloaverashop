@@ -126,24 +126,6 @@ export default function Footer() {
 
           {/* Working Hours */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-emerald-400">
-              Radno vreme
-            </h4>
-            <ul className="space-y-2 text-sm">
-              <li className="flex justify-between text-gray-300">
-                <span>Ponedeljak - Petak:</span>
-                <span className="font-semibold">09:00 - 17:00</span>
-              </li>
-              <li className="flex justify-between text-gray-300">
-                <span>Subota:</span>
-                <span className="font-semibold">09:00 - 14:00</span>
-              </li>
-              <li className="flex justify-between text-gray-300">
-                <span>Nedelja:</span>
-                <span className="font-semibold">Zatvoreno</span>
-              </li>
-            </ul>
-
             <div className="mt-6 p-4 bg-emerald-600/20 border border-emerald-600/30 rounded-lg">
               <p className="text-emerald-400 font-semibold text-sm mb-1">
                 Besplatna dostava!

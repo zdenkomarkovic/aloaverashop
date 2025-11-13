@@ -1,3 +1,5 @@
+import '@/app/globals.css';
+
 export const metadata = {
   title: 'Sanity Studio',
 };
@@ -9,7 +11,7 @@ export default function StudioLayout({
 }) {
   return (
     <html lang="sr">
-      <body>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

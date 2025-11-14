@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/send-mail";
 
 // Environment variable za store email
-const STORE_EMAIL = process.env.STORE_EMAIL || "sijaj.sa.tijanam@gmail.com";
+const STORE_EMAIL = process.env.STORE_EMAIL;
 
 interface CartItem {
   _id: string;
@@ -26,6 +26,15 @@ export async function POST(request: Request) {
       items: CartItem[];
       totalPrice: number;
     };
+
+    // Validate environment variables
+    if (!STORE_EMAIL) {
+      console.error("STORE_EMAIL environment variable is not set");
+      return NextResponse.json(
+        { error: "Server konfiguracija nije kompletna" },
+        { status: 500 }
+      );
+    }
 
     // Validate required fields
     if (!name || !email || !phone || !address || !city || !postalCode) {

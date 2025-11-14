@@ -76,7 +76,7 @@ export default function PoslovnaSaradnjaPage() {
   ];
 
   return (
-    <main className="min-h-screen  pb-20">
+    <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-32 md:py-40 text-white overflow-hidden">
         {/* Background Image */}
@@ -187,7 +187,25 @@ export default function PoslovnaSaradnjaPage() {
           </div>
         </div>
       </section>
-
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <div className="container mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl text-white font-bold mb-6">
+            Spremni ste da započnete?
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Kontaktirajte nas danas i saznajte kako možete postati deo našeg
+            uspešnog tima!
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="bg-white text-emerald-400 hover:bg-gray-100 text-lg px-8 py-6"
+          >
+            <Link href="/kontakt">Kontaktirajte nas odmah</Link>
+          </Button>
+        </div>
+      </section>
       {/* What You Get Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
@@ -221,10 +239,10 @@ export default function PoslovnaSaradnjaPage() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-20 bg-emerald-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Šta kažu naši partneri?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -279,7 +297,7 @@ export default function PoslovnaSaradnjaPage() {
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <svg
-                      className="w-10 h-10 text-emerald-600 opacity-50"
+                      className="w-10 h-10 text-emerald-400 opacity-50"
                       fill="currentColor"
                       viewBox="0 0 32 32"
                     >
@@ -296,7 +314,7 @@ export default function PoslovnaSaradnjaPage() {
                       {testimonial.name}
                     </p>
                     <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-sm text-emerald-600 font-semibold">
+                    <p className="text-sm text-emerald-400 font-semibold">
                       {testimonial.location}
                     </p>
                   </div>
@@ -304,26 +322,6 @@ export default function PoslovnaSaradnjaPage() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-        <div className="container mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Spremni ste da započnete?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Kontaktirajte nas danas i saznajte kako možete postati deo našeg
-            uspešnog tima!
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-emerald-600 hover:bg-gray-100 text-lg px-8 py-6"
-          >
-            <Link href="/kontakt">Kontaktirajte nas odmah</Link>
-          </Button>
         </div>
       </section>
     </main>

@@ -90,8 +90,8 @@ export default function Header() {
           <Image
             src={Logo}
             alt="dm rustic 24"
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             className={`rounded-full `}
           />{" "}
           <span className="text-2xl">Aloe Vera</span>

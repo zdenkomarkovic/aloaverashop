@@ -9,20 +9,21 @@ import { useToast } from "@/hooks/use-toast";
 
 interface AddToCartButtonProps {
   product: Product;
+  quantity?: number;
 }
 
-export default function AddToCartButton({ product }: AddToCartButtonProps) {
+export default function AddToCartButton({ product, quantity = 1 }: AddToCartButtonProps) {
   const { addItem } = useCart();
   const { toast } = useToast();
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = () => {
-    addItem(product);
+    addItem(product, quantity);
     setIsAdded(true);
 
     toast({
       title: "Dodato u korpu!",
-      description: `${product.name} je uspešno dodat u korpu.`,
+      description: `${quantity}x ${product.name} je uspešno dodato u korpu.`,
     });
 
     setTimeout(() => setIsAdded(false), 2000);

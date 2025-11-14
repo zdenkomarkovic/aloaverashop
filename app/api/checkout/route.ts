@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/send-mail";
 
-// Environment variables za store kontakt informacije
+// Environment variable za store email
 const STORE_EMAIL = process.env.STORE_EMAIL || "sijaj.sa.tijanam@gmail.com";
-const STORE_WHATSAPP_RS = process.env.STORE_WHATSAPP_RS || "381645215667";
-const STORE_WHATSAPP_RS_DISPLAY = process.env.STORE_WHATSAPP_RS_DISPLAY || "064/52-15-667";
-const STORE_VIBER_BIH = process.env.STORE_VIBER_BIH || "065/311-833";
 
 interface CartItem {
   _id: string;
@@ -234,8 +231,8 @@ export async function POST(request: Request) {
             <p style="margin-top: 30px;">Ako imate bilo kakvih pitanja, slobodno nas kontaktirajte:</p>
             <ul style="list-style: none; padding: 0;">
               <li>📧 Email: <a href="mailto:${STORE_EMAIL}" style="color: #10b981;">${STORE_EMAIL}</a></li>
-              <li>📱 WhatsApp (Srbija): <a href="https://wa.me/${STORE_WHATSAPP_RS}" style="color: #10b981;">${STORE_WHATSAPP_RS_DISPLAY}</a></li>
-              <li>📱 Viber (BiH): ${STORE_VIBER_BIH}</li>
+              <li>📱 WhatsApp (Srbija): <a href="https://wa.me/381645215667" style="color: #10b981;">064/52-15-667</a></li>
+              <li>📱 Viber (BiH): 065/311-833</li>
             </ul>
           </div>
 

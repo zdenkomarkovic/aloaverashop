@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { Check, X, Package, Mail, MessageCircle } from "lucide-react";
 import ProductImageGallery from "@/components/ProductImageGallery";
 import { portableTextComponents } from "@/components/PortableTextComponents";
+import AddToCartButton from "@/components/AddToCartButton";
 
 interface ProductPageProps {
   params: Promise<{
@@ -125,6 +126,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
               )}
             </div>
+
+            {/* Add to Cart Button */}
+            {product.inStock && (
+              <div className="mb-6">
+                <AddToCartButton product={product} />
+              </div>
+            )}
 
             {/* CTA Buttons */}
             <div className="space-y-4 mb-8">

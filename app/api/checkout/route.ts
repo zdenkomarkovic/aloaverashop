@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/send-mail";
 
+// Environment variables za store kontakt informacije
+const STORE_EMAIL = process.env.STORE_EMAIL || "sijaj.sa.tijanam@gmail.com";
+const STORE_WHATSAPP_RS = process.env.STORE_WHATSAPP_RS || "381645215667";
+const STORE_WHATSAPP_RS_DISPLAY = process.env.STORE_WHATSAPP_RS_DISPLAY || "064/52-15-667";
+const STORE_VIBER_BIH = process.env.STORE_VIBER_BIH || "065/311-833";
+
 interface CartItem {
   _id: string;
   name: string;
@@ -149,7 +155,7 @@ export async function POST(request: Request) {
     // Send email to store owner
     const storeEmailResult = await sendMail({
       email: email, // Reply-To je email kupca da prodavac može odmah odgovoriti
-      sendTo: "sijaj.sa.tijanam@gmail.com",
+      sendTo: STORE_EMAIL,
       subject: `Nova porudžbina od ${name}`,
       text: `Nova porudžbina od ${name}. Email: ${email}, Telefon: ${phone}. Ukupno: ${totalPrice} RSD`,
       html: emailHtml,
@@ -227,9 +233,9 @@ export async function POST(request: Request) {
 
             <p style="margin-top: 30px;">Ako imate bilo kakvih pitanja, slobodno nas kontaktirajte:</p>
             <ul style="list-style: none; padding: 0;">
-              <li>📧 Email: <a href="mailto:sijaj.sa.tijanam@gmail.com" style="color: #10b981;">sijaj.sa.tijanam@gmail.com</a></li>
-              <li>📱 WhatsApp (Srbija): <a href="https://wa.me/381645215667" style="color: #10b981;">064/52-15-667</a></li>
-              <li>📱 Viber (BiH): 065/311-833</li>
+              <li>📧 Email: <a href="mailto:${STORE_EMAIL}" style="color: #10b981;">${STORE_EMAIL}</a></li>
+              <li>📱 WhatsApp (Srbija): <a href="https://wa.me/${STORE_WHATSAPP_RS}" style="color: #10b981;">${STORE_WHATSAPP_RS_DISPLAY}</a></li>
+              <li>📱 Viber (BiH): ${STORE_VIBER_BIH}</li>
             </ul>
           </div>
 
@@ -241,7 +247,7 @@ export async function POST(request: Request) {
     `;
 
     const customerEmailResult = await sendMail({
-      email: "sijaj.sa.tijanam@gmail.com", // Reply-To je email prodavnice da kupac može odgovoriti
+      email: STORE_EMAIL, // Reply-To je email prodavnice da kupac može odgovoriti
       sendTo: email,
       subject: "Potvrda porudžbine - Aloe Vera Shop",
       text: `Hvala na porudžbini! Vaša porudžbina je uspešno primljena. Ukupno: ${totalPrice} RSD. Kontaktiraćemo vas u roku od 24h.`,

@@ -20,9 +20,10 @@ Sistem korpe i checkout-a je kompletan implementiran! Evo šta je sve dodato:
 - ✅ Automatsko slanje email-a
 
 ### 3. **Email notifikacije**
-- ✅ Email sa detaljima porudžbine poslat prodavcu (`sijaj.sa.tijanam@gmail.com`)
+- ✅ Email sa detaljima porudžbine poslat prodavcu (konfiguriše se preko env varijabli)
 - ✅ Potvrda porudžbine poslata kupcu
 - ✅ Profesionalno dizajnirani HTML email-ovi
+- ✅ Svi kontakti i email-ovi konfigurisani preko environment varijabli
 
 ## 🔧 Potrebna konfiguracija
 
@@ -37,13 +38,19 @@ Da bi checkout radio i slao email-ove, potrebno je da podesite SMTP kredencijale
    - Za Gmail: omogućite "App Password" u Google Account settings
    - Za druge servise: koristite njihove SMTP kredencijale
 
-2. **Dodajte SMTP kredencijale u `.env.local`**
+2. **Dodajte SMTP kredencijale i kontakt informacije u `.env.local`**
    ```env
    SMTP_HOST=smtp.gmail.com
    SMTP_PORT=587
    SMTP_USER=vasa-email@gmail.com
    SMTP_PASS=vaša-app-lozinka
    CONTACT_EMAIL=email-za-prijem-porudzbina@gmail.com
+
+   # Store Contact Information (za email template-e)
+   STORE_EMAIL=sijaj.sa.tijanam@gmail.com
+   STORE_WHATSAPP_RS=381645215667
+   STORE_WHATSAPP_RS_DISPLAY=064/52-15-667
+   STORE_VIBER_BIH=065/311-833
    ```
 
 3. **Gmail App Password (ako koristite Gmail)**
@@ -53,7 +60,15 @@ Da bi checkout radio i slao email-ove, potrebno je da podesite SMTP kredencijale
    - Generišite app password za "Mail"
    - Kopirajte generisanu lozinku i stavite u `SMTP_PASS`
 
-4. **Restartujte dev server**
+4. **Objašnjenje environment varijabli**
+   - `SMTP_*`: Kredencijali za slanje email-ova
+   - `CONTACT_EMAIL`: Email za prijem poruka sa kontakt forme
+   - `STORE_EMAIL`: Email prodavnice (prijem porudžbina i kontakt sa kupcima)
+   - `STORE_WHATSAPP_RS`: WhatsApp broj u međunarodnom formatu (bez +)
+   - `STORE_WHATSAPP_RS_DISPLAY`: WhatsApp broj za prikaz u email-ovima
+   - `STORE_VIBER_BIH`: Viber broj za prikaz u email-ovima
+
+5. **Restartujte dev server**
    ```bash
    npm run dev
    ```
@@ -62,7 +77,7 @@ Da bi checkout radio i slao email-ove, potrebno je da podesite SMTP kredencijale
 
 Kada kupac završi checkout:
 
-1. **Email prodavcu** (`sijaj.sa.tijanam@gmail.com`) sa:
+1. **Email prodavcu** (definisan u `STORE_EMAIL` env varijabli) sa:
    - Svim podacima kupca
    - Listom proizvoda i količina
    - Ukupnom cenom
@@ -145,7 +160,7 @@ hooks/
 
 - Korpa se čuva u LocalStorage - perzistentna je između sesija
 - Samo proizvodi koji su "na stanju" mogu se dodati u korpu
-- Svi email-ovi idu na `sijaj.sa.tijanam@gmail.com`
+- Email adrese i kontakti se lako menjaju preko `.env.local` fajla
 - Besplatna dostava za sve porudžbine
 - Plaćanje pouzećem
 

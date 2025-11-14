@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProductBySlug } from "@/lib/sanity.queries";
-import { urlFor } from "@/sanity/image";
 import { PortableText } from "@portabletext/react";
 import { Check, X, Package, Mail, MessageCircle } from "lucide-react";
 import ProductImageGallery from "@/components/ProductImageGallery";

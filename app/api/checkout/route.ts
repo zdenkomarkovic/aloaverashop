@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
-import * as brevo from "@getbrevo/brevo";
-
-const apiInstance = new brevo.TransactionalEmailsApi();
-apiInstance.setApiKey(
-  brevo.TransactionalEmailsApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY || ""
-);
+import { sendMail } from "@/lib/send-mail";
 
 interface CartItem {
   _id: string;
@@ -153,19 +147,17 @@ export async function POST(request: Request) {
     `;
 
     // Send email to store owner
-    const sendSmtpEmail = new brevo.SendSmtpEmail();
-    sendSmtpEmail.sender = {
-      name: "Aloe Vera Shop",
-      email: "noreply@aloaverashop.com"
-    };
-    sendSmtpEmail.to = [{
-      email: "sijaj.sa.tijanam@gmail.com",
-      name: "Aloe Vera Shop"
-    }];
-    sendSmtpEmail.subject = `Nova porudžbina od ${name}`;
-    sendSmtpEmail.htmlContent = emailHtml;
+    const storeEmailResult = await sendMail({
+      email: process.env.SMTP_USER || "server.manikam@gmail.com",
+      sendTo: "sijaj.sa.tijanam@gmail.com",
+      subject: `Nova porudžbina od ${name}`,
+      text: `Nova porudžbina od ${name}. Email: ${email}, Telefon: ${phone}. Ukupno: ${totalPrice} RSD`,
+      html: emailHtml,
+    });
 
-    await apiInstance.sendTransacEmail(sendSmtpEmail);
+    if (!storeEmailResult) {
+      console.error("Failed to send email to store owner");
+    }
 
     // Send confirmation email to customer
     const customerEmailHtml = `
@@ -248,19 +240,17 @@ export async function POST(request: Request) {
       </html>
     `;
 
-    const customerEmail = new brevo.SendSmtpEmail();
-    customerEmail.sender = {
-      name: "Aloe Vera Shop",
-      email: "noreply@aloaverashop.com"
-    };
-    customerEmail.to = [{
-      email: email,
-      name: name
-    }];
-    customerEmail.subject = "Potvrda porudžbine - Aloe Vera Shop";
-    customerEmail.htmlContent = customerEmailHtml;
+    const customerEmailResult = await sendMail({
+      email: process.env.SMTP_USER || "server.manikam@gmail.com",
+      sendTo: email,
+      subject: "Potvrda porudžbine - Aloe Vera Shop",
+      text: `Hvala na porudžbini! Vaša porudžbina je uspešno primljena. Ukupno: ${totalPrice} RSD. Kontaktiraćemo vas u roku od 24h.`,
+      html: customerEmailHtml,
+    });
 
-    await apiInstance.sendTransacEmail(customerEmail);
+    if (!customerEmailResult) {
+      console.error("Failed to send confirmation email to customer");
+    }
 
     return NextResponse.json({
       success: true,

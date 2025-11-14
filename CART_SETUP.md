@@ -26,34 +26,34 @@ Sistem korpe i checkout-a je kompletan implementiran! Evo šta je sve dodato:
 
 ## 🔧 Potrebna konfiguracija
 
-### Brevo API ključ (za slanje email-ova)
+### SMTP podešavanja (za slanje email-ova)
 
-Da bi checkout radio i slao email-ove, potrebno je da dodate Brevo API ključ.
+Da bi checkout radio i slao email-ove, potrebno je da podesite SMTP kredencijale.
 
 #### Koraci:
 
-1. **Registrujte se na Brevo**
-   - Idite na https://www.brevo.com/
-   - Kreirajte besplatan nalog (300 email-ova dnevno besplatno!)
+1. **Pripremite SMTP nalog**
+   - Možete koristiti Gmail, Outlook, ili bilo koji SMTP servis
+   - Za Gmail: omogućite "App Password" u Google Account settings
+   - Za druge servise: koristite njihove SMTP kredencijale
 
-2. **Dobijte API ključ**
-   - Nakon prijave, idite na **Settings** → **SMTP & API**
-   - Kliknite **Create a new API key**
-   - Imenujte ključ (npr. "Aloe Vera Shop")
-   - Kopirajte API ključ (prikazaće se samo jednom!)
-
-3. **Verifikujte sender email (VAŽNO!)**
-   - Idite na **Senders** → **Senders & IP**
-   - Dodajte `noreply@aloaverashop.com` ili vaš domain
-   - Verifikujte email adresu (kliknite link u email-u koji dobijete)
-   - **NAPOMENA:** Možete koristiti bilo koju email adresu koju posedujete za testiranje
-
-4. **Dodajte ključ u `.env.local`**
+2. **Dodajte SMTP kredencijale u `.env.local`**
    ```env
-   BREVO_API_KEY=xkeysib-vaš_api_ključ_ovde
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_USER=vasa-email@gmail.com
+   SMTP_PASS=vaša-app-lozinka
+   CONTACT_EMAIL=email-za-prijem-porudzbina@gmail.com
    ```
 
-5. **Restartujte dev server**
+3. **Gmail App Password (ako koristite Gmail)**
+   - Idite na Google Account → Security
+   - Omogućite 2-Step Verification
+   - Idite na "App passwords"
+   - Generišite app password za "Mail"
+   - Kopirajte generisanu lozinku i stavite u `SMTP_PASS`
+
+4. **Restartujte dev server**
    ```bash
    npm run dev
    ```
@@ -113,7 +113,7 @@ Kada kupac završi checkout:
    - Popunite formu
    - Kliknite "Pošalji porudžbinu"
 
-**NAPOMENA:** Bez Brevo API ključa, checkout će prijaviti grešku. Dodajte ključ za potpunu funkcionalnost!
+**NAPOMENA:** Bez SMTP kredencijala, checkout će prijaviti grešku. Dodajte SMTP podešavanja za potpunu funkcionalnost!
 
 ## 🛠️ Komponente
 
@@ -152,11 +152,11 @@ hooks/
 ## 🚀 Production
 
 Pre deployment-a u production:
-1. Dodajte pravi Brevo API ključ u environment variables
-2. Verifikujte sender email adresu na Brevo
-3. (Opciono) Dodajte i verifikujte svoj domain za profesionalnije email-ove
+1. Dodajte SMTP kredencijale u environment variables
+2. Koristite profesionalni email nalog (ne Gmail za production)
+3. (Preporučeno) Koristite profesionalni SMTP servis (SendGrid, Mailgun, AWS SES)
 4. Testirajte kompletnu kupovinu
 
 ---
 
-Sve je spremno! Samo dodajte Brevo API ključ i sistem je potpuno funkcionalan! 🎉
+Sve je spremno! Samo dodajte SMTP kredencijale i sistem je potpuno funkcionalan! 🎉

@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import * as brevo from "@getbrevo/brevo";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder");
+const apiInstance = new brevo.TransactionalEmailsApi();
+apiInstance.setApiKey(
+  brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY || ""
+);
 
 interface CartItem {
   _id: string;
@@ -149,12 +153,19 @@ export async function POST(request: Request) {
     `;
 
     // Send email to store owner
-    await resend.emails.send({
-      from: "Aloe Vera Shop <onboarding@resend.dev>",
-      to: "sijaj.sa.tijanam@gmail.com",
-      subject: `Nova porudžbina od ${name}`,
-      html: emailHtml,
-    });
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    sendSmtpEmail.sender = {
+      name: "Aloe Vera Shop",
+      email: "noreply@aloaverashop.com"
+    };
+    sendSmtpEmail.to = [{
+      email: "sijaj.sa.tijanam@gmail.com",
+      name: "Aloe Vera Shop"
+    }];
+    sendSmtpEmail.subject = `Nova porudžbina od ${name}`;
+    sendSmtpEmail.htmlContent = emailHtml;
+
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
 
     // Send confirmation email to customer
     const customerEmailHtml = `
@@ -237,12 +248,19 @@ export async function POST(request: Request) {
       </html>
     `;
 
-    await resend.emails.send({
-      from: "Aloe Vera Shop <onboarding@resend.dev>",
-      to: email,
-      subject: "Potvrda porudžbine - Aloe Vera Shop",
-      html: customerEmailHtml,
-    });
+    const customerEmail = new brevo.SendSmtpEmail();
+    customerEmail.sender = {
+      name: "Aloe Vera Shop",
+      email: "noreply@aloaverashop.com"
+    };
+    customerEmail.to = [{
+      email: email,
+      name: name
+    }];
+    customerEmail.subject = "Potvrda porudžbine - Aloe Vera Shop";
+    customerEmail.htmlContent = customerEmailHtml;
+
+    await apiInstance.sendTransacEmail(customerEmail);
 
     return NextResponse.json({
       success: true,

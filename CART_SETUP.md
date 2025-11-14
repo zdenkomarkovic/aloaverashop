@@ -26,30 +26,32 @@ Sistem korpe i checkout-a je kompletan implementiran! Evo šta je sve dodato:
 
 ## 🔧 Potrebna konfiguracija
 
-### Resend API ključ (za slanje email-ova)
+### Brevo API ključ (za slanje email-ova)
 
-Da bi checkout radio i slao email-ove, potrebno je da dodate Resend API ključ.
+Da bi checkout radio i slao email-ove, potrebno je da dodate Brevo API ključ.
 
 #### Koraci:
 
-1. **Registrujte se na Resend**
-   - Idite na https://resend.com/signup
-   - Kreirajte besplatan nalog
+1. **Registrujte se na Brevo**
+   - Idite na https://www.brevo.com/
+   - Kreirajte besplatan nalog (300 email-ova dnevno besplatno!)
 
 2. **Dobijte API ključ**
-   - Nakon prijave, idite na **API Keys** sekciju
-   - Kliknite **Create API Key**
-   - Kopirajte ključ (prikazaće se samo jednom!)
+   - Nakon prijave, idite na **Settings** → **SMTP & API**
+   - Kliknite **Create a new API key**
+   - Imenujte ključ (npr. "Aloe Vera Shop")
+   - Kopirajte API ključ (prikazaće se samo jednom!)
 
-3. **Dodajte ključ u `.env.local`**
+3. **Verifikujte sender email (VAŽNO!)**
+   - Idite na **Senders** → **Senders & IP**
+   - Dodajte `noreply@aloaverashop.com` ili vaš domain
+   - Verifikujte email adresu (kliknite link u email-u koji dobijete)
+   - **NAPOMENA:** Možete koristiti bilo koju email adresu koju posedujete za testiranje
+
+4. **Dodajte ključ u `.env.local`**
    ```env
-   RESEND_API_KEY=re_vaš_api_ključ_ovde
+   BREVO_API_KEY=xkeysib-vaš_api_ključ_ovde
    ```
-
-4. **Verifikujte domain (opciono ali preporučeno)**
-   - U Resend dashboard-u, idite na **Domains**
-   - Dodajte svoj domain za profesionalnije email-ove
-   - Dok ne dodate domain, email-ovi će dolaziti sa `onboarding@resend.dev`
 
 5. **Restartujte dev server**
    ```bash
@@ -111,7 +113,7 @@ Kada kupac završi checkout:
    - Popunite formu
    - Kliknite "Pošalji porudžbinu"
 
-**NAPOMENA:** Bez Resend API ključa, checkout će prijaviti grešku. Dodajte ključ za potpunu funkcionalnost!
+**NAPOMENA:** Bez Brevo API ključa, checkout će prijaviti grešku. Dodajte ključ za potpunu funkcionalnost!
 
 ## 🛠️ Komponente
 
@@ -150,10 +152,11 @@ hooks/
 ## 🚀 Production
 
 Pre deployment-a u production:
-1. Dodajte pravi Resend API ključ u environment variables
-2. Verifikujte domain na Resend za profesionalnije email-ove
-3. Testirajte kompletnu kupovinu
+1. Dodajte pravi Brevo API ključ u environment variables
+2. Verifikujte sender email adresu na Brevo
+3. (Opciono) Dodajte i verifikujte svoj domain za profesionalnije email-ove
+4. Testirajte kompletnu kupovinu
 
 ---
 
-Sve je spremno! Samo dodajte Resend API ključ i sistem je potpuno funkcionalan! 🎉
+Sve je spremno! Samo dodajte Brevo API ključ i sistem je potpuno funkcionalan! 🎉

@@ -148,7 +148,7 @@ export async function POST(request: Request) {
 
     // Send email to store owner
     const storeEmailResult = await sendMail({
-      email: process.env.SMTP_USER || "server.manikam@gmail.com",
+      email: email, // Reply-To je email kupca da prodavac može odmah odgovoriti
       sendTo: "sijaj.sa.tijanam@gmail.com",
       subject: `Nova porudžbina od ${name}`,
       text: `Nova porudžbina od ${name}. Email: ${email}, Telefon: ${phone}. Ukupno: ${totalPrice} RSD`,
@@ -241,7 +241,7 @@ export async function POST(request: Request) {
     `;
 
     const customerEmailResult = await sendMail({
-      email: process.env.SMTP_USER || "server.manikam@gmail.com",
+      email: "sijaj.sa.tijanam@gmail.com", // Reply-To je email prodavnice da kupac može odgovoriti
       sendTo: email,
       subject: "Potvrda porudžbine - Aloe Vera Shop",
       text: `Hvala na porudžbini! Vaša porudžbina je uspešno primljena. Ukupno: ${totalPrice} RSD. Kontaktiraćemo vas u roku od 24h.`,

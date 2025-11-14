@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Logo from "../public/favicon-32x32.png";
 import Link from "next/link";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, ShoppingCart } from "lucide-react";
 
 import {
   Sheet,
@@ -16,6 +16,8 @@ import {
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { navList } from "@/constants/index";
+import { useCart } from "@/contexts/CartContext";
+import CartSidebar from "@/components/CartSidebar";
 
 const mobTitleStyles = "text-lg py-2";
 
@@ -63,6 +65,8 @@ const DesktopNav = () => (
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const HandleScroll = () => {
@@ -78,28 +82,48 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`flex justify-center ${
-        scrolled
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-md"
-          : "bg-transparent"
-      }  fixed top-0 left-0 right-0 z-50 transition-colors`}
-    >
-      <nav className="flex items-center justify-between px-8 max-w-[80rem] w-full text-emerald-400 font-bold">
-        <Link href="/" className=" flex gap-3 items-center">
-          <Image
-            src={Logo}
-            alt="dm rustic 24"
-            width={60}
-            height={60}
-            className={`rounded-full `}
-          />{" "}
-          <span className="text-2xl">Aloe Vera</span>
-        </Link>
-        <DesktopNav />
+    <>
+      <header
+        className={`flex justify-center ${
+          scrolled
+            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-md"
+            : "bg-transparent"
+        }  fixed top-0 left-0 right-0 z-50 transition-colors`}
+      >
+        <nav className="flex items-center justify-between px-8 max-w-[80rem] w-full text-emerald-400 font-bold">
+          <Link href="/" className=" flex gap-3 items-center">
+            <Image
+              src={Logo}
+              alt="dm rustic 24"
+              width={80}
+              height={80}
+              className={`rounded-full `}
+            />{" "}
+            <span className="text-2xl">Aloe Vera</span>
+          </Link>
+          <DesktopNav />
 
-        <MobileMenu />
-      </nav>
-    </header>
+          <div className="flex items-center gap-4">
+            {/* Cart Icon */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 hover:bg-emerald-50 rounded-full transition-colors"
+            >
+              <ShoppingCart className="w-6 h-6 text-emerald-400" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
+            <MobileMenu />
+          </div>
+        </nav>
+      </header>
+
+      {/* Cart Sidebar */}
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+    </>
   );
 }

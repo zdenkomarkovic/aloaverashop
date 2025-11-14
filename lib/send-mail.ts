@@ -2,18 +2,19 @@
 
 import nodemailer from "nodemailer";
 
-const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST;
-const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
-const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD;
-const SITE_MAIL_RECIEVER = process.env.SITE_MAIL_RECIEVER;
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = process.env.SMTP_PORT;
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASS = process.env.SMTP_PASS;
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
+
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  host: SMTP_SERVER_HOST,
-  port: 587,
-  secure: true,
+  host: SMTP_HOST,
+  port: Number(SMTP_PORT) || 587,
+  secure: false, // true for 465, false for other ports
   auth: {
-    user: SMTP_SERVER_USERNAME,
-    pass: SMTP_SERVER_PASSWORD,
+    user: SMTP_USER,
+    pass: SMTP_PASS,
   },
 });
 
@@ -31,23 +32,19 @@ export async function sendMail({
   html?: string;
 }) {
   try {
+    const info = await transporter.sendMail({
+      from: `"Aloe Vera Shop" <${SMTP_USER}>`, // Šalje sa autentifikovanog naloga
+      replyTo: email, // Reply-To je email pošiljaoca (korisnika ili sistema)
+      to: sendTo || CONTACT_EMAIL,
+      subject: subject,
+      text: text,
+      html: html ? html : "",
+    });
+    console.log("Message Sent", info.messageId);
+    console.log("Mail sent to", sendTo || CONTACT_EMAIL);
+    return info;
   } catch (error) {
-    console.error(
-      "Something Went Wrong",
-      SMTP_SERVER_USERNAME,
-      SMTP_SERVER_PASSWORD,
-      error
-    );
-    return;
+    console.error("Error sending email:", error);
+    return null;
   }
-  const info = await transporter.sendMail({
-    from: email,
-    to: sendTo || SITE_MAIL_RECIEVER,
-    subject: subject,
-    text: text,
-    html: html ? html : "",
-  });
-  console.log("Message Sent", info.messageId);
-  console.log("Mail sent to", SITE_MAIL_RECIEVER);
-  return info;
 }

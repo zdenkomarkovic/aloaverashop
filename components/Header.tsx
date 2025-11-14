@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../public/favicon-32x32.png";
+import Logo from "../public/android-chrome-192x192.png";
 import Link from "next/link";
 import { MenuIcon, ShoppingCart } from "lucide-react";
 
@@ -94,7 +94,7 @@ export default function Header() {
           <Link href="/" className=" flex gap-3 items-center">
             <Image
               src={Logo}
-              alt="dm rustic 24"
+              alt="Aloe Vera Shop"
               width={80}
               height={80}
               className={`rounded-full `}

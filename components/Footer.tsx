@@ -128,11 +128,9 @@ export default function Footer() {
           <div>
             <div className="mt-6 p-4 bg-emerald-600/20 border border-emerald-600/30 rounded-lg">
               <p className="text-emerald-400 font-semibold text-sm mb-1">
-                Besplatna dostava!
+                Besplatna dostava i 5% popusta!
               </p>
-              <p className="text-gray-300 text-xs">
-                Za porudžbine preko 5000 RSD
-              </p>
+              <p className="text-gray-300 text-xs">Za porudžbine preko 70€</p>
             </div>
           </div>
         </div>

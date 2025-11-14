@@ -120,11 +120,10 @@ export default function KontaktPage() {
             {/* Info Box */}
             <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6 rounded-xl">
               <h3 className="font-bold text-white text-xl mb-2">
-                Besplatna dostava!
+                Besplatna dostava i 5% popusta!
               </h3>
-              <p className="text-emerald-50">
-                Za sve porudžbine preko 5000 RSD dobijate besplatnu dostavu
-                širom Srbije i BiH.
+              <p className="text-emerald-50 text-center">
+                Za sve porudžbine preko 70€
               </p>
             </div>
           </div>

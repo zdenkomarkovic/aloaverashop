@@ -9,7 +9,7 @@ interface CategoryCardProps {
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  const imageUrl = category.image
+  const imageUrl = category.image?.asset?._ref
     ? urlFor(category.image).width(400).height(400).url()
     : '/placeholder-category.jpg';
 

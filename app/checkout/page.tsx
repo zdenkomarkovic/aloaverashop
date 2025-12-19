@@ -260,7 +260,7 @@ export default function CheckoutPage() {
 
               <div className="space-y-4 mb-6">
                 {items.map((item) => {
-                  const imageUrl = item.images[0]
+                  const imageUrl = item.images[0]?.asset?._ref
                     ? urlFor(item.images[0]).width(100).height(100).url()
                     : "/placeholder-product.jpg";
 

@@ -10,7 +10,8 @@ export async function getAllCategories(): Promise<Category[]> {
     slug,
     description,
     image {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     order
@@ -26,7 +27,8 @@ export async function getAllProducts(): Promise<Product[]> {
     name,
     slug,
     images[] {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     category->{
@@ -53,7 +55,8 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     name,
     slug,
     images[] {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     category->{
@@ -80,7 +83,8 @@ export async function getBestsellerProducts(): Promise<Product[]> {
     name,
     slug,
     images[] {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     category->{
@@ -107,7 +111,8 @@ export async function getProductsByCategory(categorySlug: string): Promise<Produ
     name,
     slug,
     images[] {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     category->{
@@ -134,7 +139,8 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     name,
     slug,
     images[] {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     category->{
@@ -167,7 +173,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     author,
     publishedAt,
     mainImage {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     excerpt,
@@ -185,7 +192,8 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     author,
     publishedAt,
     mainImage {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     excerpt,
@@ -203,7 +211,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     author,
     publishedAt,
     mainImage {
-      asset->{_id, url},
+      _type,
+      asset,
       alt
     },
     excerpt,

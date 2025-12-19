@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const imageUrl = post.mainImage
+  const imageUrl = post.mainImage?.asset?._ref
     ? urlFor(post.mainImage).width(1200).height(600).url()
     : "/placeholder-blog.jpg";
 

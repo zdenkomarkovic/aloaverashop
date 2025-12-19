@@ -9,6 +9,9 @@ export const portableTextComponents: PortableTextComponents = {
     }: {
       value: { asset: { _ref: string }; alt?: string; caption?: string };
     }) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
       const imageUrl = urlFor(value).width(1200).url();
       return (
         <div className="my-8 rounded-xl overflow-hidden">

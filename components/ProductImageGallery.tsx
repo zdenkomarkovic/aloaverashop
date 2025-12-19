@@ -30,7 +30,7 @@ export default function ProductImageGallery({
 }: ProductImageGalleryProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const mainImageUrl = images[selectedImageIndex]
+  const mainImageUrl = images[selectedImageIndex]?.asset?._ref
     ? urlFor(images[selectedImageIndex]).width(800).height(800).url()
     : "/placeholder-product.jpg";
 
@@ -53,7 +53,7 @@ export default function ProductImageGallery({
               NOVO
             </span>
           )}
-          {badges?.discount && badges.discount > 0 && (
+          {badges?.discount != null && badges.discount > 0 && (
             <span className="bg-red-600 text-white px-4 py-2 text-sm font-semibold rounded-full">
               -{badges.discount}%
             </span>
@@ -80,7 +80,7 @@ export default function ProductImageGallery({
               }`}
             >
               <Image
-                src={urlFor(image).width(200).height(200).url()}
+                src={image?.asset?._ref ? urlFor(image).width(200).height(200).url() : "/placeholder-product.jpg"}
                 alt={image.alt || `${productName} ${index + 1}`}
                 fill
                 className="object-cover"

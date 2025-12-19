@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0;
+    : undefined;
 
   return (
     <main className="min-h-screen pt-32 pb-20">

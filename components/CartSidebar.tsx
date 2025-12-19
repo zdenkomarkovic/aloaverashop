@@ -61,7 +61,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             ) : (
               <div className="space-y-4">
                 {items.map((item) => {
-                  const imageUrl = item.images[0]
+                  const imageUrl = item.images[0]?.asset?._ref
                     ? urlFor(item.images[0]).width(200).height(200).url()
                     : "/placeholder-product.jpg";
 

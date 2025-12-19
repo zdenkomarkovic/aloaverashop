@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const imageUrl = product.images[0]
+  const imageUrl = product.images[0]?.asset?._ref
     ? urlFor(product.images[0]).width(400).height(400).url()
     : "/placeholder-product.jpg";
 
